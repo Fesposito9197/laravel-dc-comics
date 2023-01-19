@@ -40,10 +40,21 @@ class ComicController extends Controller
         $data = $request->all();
     
         $new_comic = new Comic();
-        $new_comic ->title = $data['title'];
+        if (!empty ($new_comic->title = $data['title'])) {
+            $new_comic ->title = $data['title'];
+        }else{
+            dd('non puoi lasciare il campo vuoto');
+        }
+        
         $new_comic ->description = $data['description'];
         $new_comic ->price = $data['price'];
-        $new_comic ->series = $data['series'];
+        if (!empty ($new_comic ->series = $data['series'])) {
+            $new_comic ->series = $data['series'];
+        }else{
+            dd('non puoi lasciare il campo vuoto');
+        }
+        
+        
         $new_comic ->sale_date = $data['sale_date'];
         $new_comic ->type = $data['type'];
         $new_comic->save();
