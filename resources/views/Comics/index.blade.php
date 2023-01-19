@@ -15,8 +15,6 @@
             </thead>
             <tbody class="table-group-divider">
                 @foreach ($comics as $comic)
-                    
-                
                 <tr>
                     <th scope="row">{{$comic->id}}</th>
                     <td>{{$comic->title}}</td>
@@ -29,4 +27,4 @@
         </table>
                 
     </div>
-@endsection
+@endsection          
