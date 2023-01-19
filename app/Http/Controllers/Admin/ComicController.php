@@ -45,7 +45,6 @@ class ComicController extends Controller
         }else{
             dd('non puoi lasciare il campo vuoto');
         }
-        
         $new_comic ->description = $data['description'];
         $new_comic ->price = $data['price'];
         if (!empty ($new_comic ->series = $data['series'])) {
@@ -53,13 +52,14 @@ class ComicController extends Controller
         }else{
             dd('non puoi lasciare il campo vuoto');
         }
-        
-        
         $new_comic ->sale_date = $data['sale_date'];
         $new_comic ->type = $data['type'];
         $new_comic->save();
 
         return redirect()->route('comics.show' , $new_comic->id);
+        
+        
+        
     }
 
     /**
