@@ -27,7 +27,7 @@
             </div>
             <div class=" mb-3">
                 <label for="price" class="form-label"><strong>Prezzo*</strong></label>
-                <input type="number" class="form-control"  id="price" name="price" required min="10" max="900">
+                <input type="number" class="form-control"  id="price" name="price" required step="any" min="10.99" max="999.99">
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label"><strong>Data Vendita*</strong></label>
