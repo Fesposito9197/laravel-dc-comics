@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Aggiungi un nuovo fumetto</h1>
 
-        <form action="{{'comics.store'}}" method="post">
+        <form action="{{ route('comics.store') }}" method="POST">
             @csrf
             
             
