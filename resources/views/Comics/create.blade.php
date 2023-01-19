@@ -4,6 +4,7 @@
     
     <div class="container">
         <h1>Aggiungi un nuovo fumetto</h1>
+        <a href="{{ route('comics.index') }}" class="btn btn-dark">Back</a>
 
         <form action="{{ route('comics.store') }}" method="POST">
             @csrf
@@ -22,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label"><strong>Serie*</strong></label>
-                <input type="text" class="form-control" name="series" id="series" maxlength="20" required placeholder="agggiungi la serie">
+                <input type="text" class="form-control" name="series" id="series" maxlength="20" required placeholder="aggiungi la serie">
             </div>
             <div class=" mb-3">
                 <label for="price" class="form-label"><strong>Prezzo*</strong></label>
