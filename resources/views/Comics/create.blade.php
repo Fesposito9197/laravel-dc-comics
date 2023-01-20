@@ -37,8 +37,9 @@
                 <label for="description" class="form-label"><strong>Descrizione*</strong></label>
                 <textarea name="description" id="desciption" class="form-control" cols="30" rows="5"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Salva</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
+            
+            <button type="submit" class="btn btn-success">Salva</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
         </form>
     </div>
 @endsection
