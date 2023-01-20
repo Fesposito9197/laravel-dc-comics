@@ -37,19 +37,38 @@
                                 <a href="{{route('comics.edit',$comic)}}" class="dropdown-item">modifica</a>
                             </li>
                         </ul>
-                        <form action="{{route('comics.destroy', $comic)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger ms-2">Elimina</button>
-                        </form>
+                        <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                           Elimina
+                        </button>
+
                     </td>
               </tr>
               @endforeach
             </tbody>
         </table>
 
-              
-  </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Fumetto</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Sicuro di voler cancellare il Fumetto??
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{{route('comics.destroy', $comic)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger ms-2">Elimina</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
 @endsection          
 
 
