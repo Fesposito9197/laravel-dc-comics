@@ -40,11 +40,11 @@ class ComicController extends Controller
         $data = $request->all();
     
         $new_comic = new Comic();
-        // if (!empty ($new_comic->title = $data['title'])) {
-        //     $new_comic ->title = $data['title'];
-        // }else{
-        //     dd('non puoi lasciare il campo vuoto');
-        // }
+        if (!empty ($new_comic->title = $data['title'])) {
+            $new_comic->fill($data);
+        }else{
+            return view('comics.error');
+        }
         // $new_comic ->description = $data['description'];
         // $new_comic ->price = $data['price'];
         // if (!empty ($new_comic ->series = $data['series'])) {
@@ -54,7 +54,7 @@ class ComicController extends Controller
         // }
         // $new_comic ->sale_date = $data['sale_date'];
         // $new_comic ->type = $data['type'];
-        $new_comic->fill($data);
+        
         $new_comic->save();
 
         return redirect()->route('comics.show' , $new_comic->id);
