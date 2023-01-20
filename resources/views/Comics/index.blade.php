@@ -23,9 +23,26 @@
                   <td>{{$comic->title}}</td>
                   <td>{{$comic->series}}</td>
                   <td>{{$comic->sale_date}}</td>
-                  <td>{{$comic->price}}</td>
+                  <td>{{$comic->price}}€</td>
                   <td>{{$comic->type}}</td>
-                  <td><a href="{{route('comics.show' , $comic->id)}}" class="btn btn-info">info</a></td>
+                    <td class="dropdown d-flex">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Azioni
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{route('comics.show' , $comic->id)}}" class="dropdown-item" >info</a>
+                            </li>
+                            <li>
+                                <a href="{{route('comics.edit',$comic)}}" class="dropdown-item">modifica</a>
+                            </li>
+                        </ul>
+                        <form action="{{route('comics.destroy', $comic)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger ms-2">Elimina</button>
+                        </form>
+                    </td>
               </tr>
               @endforeach
             </tbody>
@@ -34,3 +51,5 @@
               
   </div>
 @endsection          
+
+
