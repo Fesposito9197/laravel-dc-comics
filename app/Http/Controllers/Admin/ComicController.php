@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+require_once __DIR__.'/../../../functions/DataValidation.php';
 
 class ComicController extends Controller
 {
@@ -39,17 +40,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         
-        $request->validate([
-            'title' => 'required|string|max=200',
-            'description'=>'required|string|max=1000',
-            'price'=>'required|numeric|decimal:2',
-            'series'=>'required|string|max=200',
-            'sale_date'=>'required|date',
-            'type' => [
-                'required',
-                Rule::in(['comic-book','graphic-novel']),
-            ],
-        ]);
+        getValidation($request);
 
         $data = $request->all();
 
@@ -112,6 +103,8 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+
+        getValidation($request);
         $data = $request-> all();
 
         $comic->update($data);
