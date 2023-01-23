@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -37,14 +38,31 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->validate([
+            'title' => 'required|string|max=200',
+            'description'=>'required|string|max=1000',
+            'price'=>'required|numeric|decimal:2',
+            'series'=>'required|string|max=200',
+            'sale_date'=>'required|date',
+            'type' => [
+                'required',
+                Rule::in(['comic-book','graphic-novel']),
+            ],
+        ]);
+
         $data = $request->all();
-    
+
+
         $new_comic = new Comic();
-        if (!empty ($new_comic->title = $data['title'])) {
-            $new_comic->fill($data);
-        }else{
-            return view('comics.error');
-        }
+
+
+        $new_comic->fill($data);
+        // if (!empty ($new_comic->title = $data['title'])) {
+        //     $new_comic->fill($data);
+        // }else{
+        //     return view('comics.error');
+        // }
         // $new_comic ->description = $data['description'];
         // $new_comic ->price = $data['price'];
         // if (!empty ($new_comic ->series = $data['series'])) {

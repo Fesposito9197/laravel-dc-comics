@@ -12,30 +12,48 @@
             
             <div class="mb-3">
                 <label for="title" class="form-label"><strong>Titolo*</strong></label>
-                <input type="text" class="form-control" id="title" name="title" maxlength="50" required placeholder="aggiungi titolo fumetto" >
+                <input type="text" class="form-control" id="title" @error('title')  @enderror name="title" maxlength="50" required placeholder="aggiungi titolo fumetto">
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label"><strong>Tipo*</strong></label>
-                <select class="form-select" id="type" name="type">
+                <select class="form-select" @error('type')  @enderror id="type" name="type">
                     <option value="comic-book">comic book</option>
                     <option value="graphic-novel">graphic novel</option>
                 </select>
+                @error('type')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label"><strong>Serie*</strong></label>
-                <input type="text" class="form-control" name="series" id="series" maxlength="20" required placeholder="aggiungi la serie">
+                <input type="text" class="form-control" name="series" @error('series')  @enderror id="series" maxlength="20" required placeholder="aggiungi la serie">
+                @error('series')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class=" mb-3">
                 <label for="price" class="form-label"><strong>Prezzo*</strong></label>
-                <input type="number" class="form-control"  id="price" name="price" required step="any" min="1.99" max="999.99">
+                <input type="number" class="form-control" @error('price')  @enderror  id="price" name="price" required step="any" min="1.99" max="999.99">
+                @error('price')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label"><strong>Data Vendita*</strong></label>
-                <input type="date" class="form-control" name="sale_date" id="sale_date" required>
+                <input type="date" class="form-control" @error('sale_date')  @enderror name="sale_date" id="sale_date" required>
+                @error('sale_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label"><strong>Descrizione*</strong></label>
-                <textarea name="description" id="desciption" class="form-control" cols="30" rows="5"></textarea>
+                <textarea name="description" id="desciption" @error('description')  @enderror class="form-control" cols="30" rows="5"></textarea>
+                @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             
             <button type="submit" class="btn btn-success">Salva</button>
